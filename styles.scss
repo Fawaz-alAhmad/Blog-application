@@ -10,3 +10,10 @@ body{
   font-size:12px;
   color:$body-text-color;
 }
+
+.logo {
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: $secondary-color;
+  color:$primary-color;
+}
