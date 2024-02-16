@@ -1,0 +1,16 @@
+@import '../../../../styles';
+
+.card{
+  width: 75vw;
+  margin: auto;
+  background: $secondary-color;
+  border: none;
+}
+
+.form-inline{
+  margin-block: 1.5rem;
+}
+
+p{
+  text-wrap: pretty;
+}
