@@ -1,12 +1,12 @@
-footer{
-  height:130px;
-  padding:15px;
-  background-color:var(--navbar-footer-color);
-  }
+footer {
+  height: 130px;
+  padding: 15px;
+  background-color: $navbar-footer-color;
+}
 
-  .logo{
+.logo {
   font-size: 1.2em;
-  }
-  .nav-link{
-    color:var(--primary-color)
-  }
+}
+.nav-link {
+  color: $primary-color;
+}
