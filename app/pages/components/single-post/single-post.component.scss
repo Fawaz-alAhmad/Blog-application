@@ -1,0 +1,15 @@
+.card{
+  border:none;
+  box-shadow: 0 -5px 30px -10px rgba(0, 0, 0, 0.12);
+}
+
+p{
+  text-align: justify;
+}
+
+.overflow-col{
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  height:116svh;
+}
