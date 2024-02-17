@@ -26,3 +26,14 @@ body{
 .bg-theme{
   background-color: $primary-color;
 }
+
+.bg-II{
+  background-color: $navbar-footer-color;
+
+}
+
+.btn-main{
+  background:$primary-color;
+  color:white;
+  text-wrap:nowrap;
+}

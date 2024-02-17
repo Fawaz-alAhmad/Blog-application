@@ -1,0 +1,33 @@
+@import "../../../../styles";
+
+.card {
+  border: none;
+  box-shadow: 0 0 7px rgb(0 0 0 / 14%);
+
+  h4 {
+    color: $primary-color;
+  }
+  p,
+  label {
+    color: $body-text-color;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-main {
+  align-self: flex-start;
+  min-width: 15%;
+  @media(max-width:575px){
+    align-self:normal;
+  }
+}
+
+.form-control {
+  padding-left: 20px;
+  border: none;
+  box-shadow: 0 0 6px rgb(0 0 0 / 10%);
+}
