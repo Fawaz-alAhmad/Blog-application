@@ -27,6 +27,14 @@ body{
   background-color: $primary-color;
 }
 
+.text-theme-primary{
+  color:$primary-color
+}
+
+.bg-secondary-theme{
+  background-color: $secondary-color;
+}
+
 .bg-II{
   background-color: $navbar-footer-color;
 
@@ -37,3 +45,4 @@ body{
   color:white;
   text-wrap:nowrap;
 }
+
