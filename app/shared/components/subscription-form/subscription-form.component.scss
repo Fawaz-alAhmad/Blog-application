@@ -2,15 +2,32 @@
 
 .card{
   width: 75vw;
-  margin: auto;
+  margin: 2rem auto;
   background: $secondary-color;
-  border: none;
 }
 
 .form-inline{
   margin-block: 1.5rem;
+  @media (max-width:767px) {
+    gap: 1rem
+  }
 }
 
 p{
   text-wrap: pretty;
+}
+
+input[type="text"],
+input[type="email"]
+{
+  height:3rem;
+  padding-left:20px;
+  width:100%;
+}
+
+.btn-sub{
+  background:$primary-color;
+  color:white;
+  text-wrap:nowrap;
+  width:max(90px,100%);
 }

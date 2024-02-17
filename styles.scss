@@ -17,3 +17,8 @@ body{
   background-color: $secondary-color;
   color:$primary-color;
 }
+
+.shadow-effect{
+  border:none;
+  box-shadow: 0 0 33px -10px rgba(71, 114, 254, 0.2);
+}
