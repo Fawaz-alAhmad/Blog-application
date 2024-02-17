@@ -25,9 +25,9 @@ input[type="email"]
   width:100%;
 }
 
-.btn-sub{
-  background:$primary-color;
-  color:white;
-  text-wrap:nowrap;
+.shadow-effect {
+  box-shadow: 0 0 18px -9px rgba(71, 114, 254, 0.3);
+}
+.btn-main{
   width:max(90px,100%);
 }

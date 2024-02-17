@@ -1,1 +1,22 @@
-<p>comment-form works!</p>
+<div class="card mt-5 bg-II">
+  <div class="card-body">
+    <h4>Leave a comment</h4>
+    <p>Share your thoughts!</p>
+
+    <form [formGroup]="commentForm">
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" id="Name" formControlName="Name" placeholder="John Doe" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="Comment">Comment</label>
+        <textarea name="" id="Comment" cols="30" rows="5" placeholder="That's amazing..." formControlName="Comment"
+          class="form-control"></textarea>
+      </div>
+
+      <button class="btn btn-main" [disabled]="commentForm.invalid">Post</button>
+
+    </form>
+  </div>
+</div>
