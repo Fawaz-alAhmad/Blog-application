@@ -4,7 +4,7 @@ import { CommentFormComponent } from "./components/comments/comment-form/comment
 import { CommentListComponent } from "./components/comments/comment-list/comment-list.component";
 import { PostCardComponent } from "../shared/components/post-card/post-card.component";
 import { SubscriptionFormComponent } from "../shared/components/subscription-form/subscription-form.component";
-import { CategoryNavbarComponent } from "./components/layout/category-navbar/category-navbar.component";
+import { CategoryNavbarComponent } from "../shared/components/layout/category-navbar/category-navbar.component";
 import { AboutUsComponent } from "./components/pages/about-us/about-us.component";
 import { ContactUsComponent } from "./components/pages/contact-us/contact-us.component";
 import { HomeComponent } from "./components/pages/home/home.component";
@@ -19,7 +19,6 @@ import { UserRoutingModule } from "./user-routing.module";
 
 @NgModule({
   declarations: [
-    CategoryNavbarComponent,
     HomeComponent,
     CommentFormComponent,
     CommentListComponent,
@@ -38,7 +37,6 @@ import { UserRoutingModule } from "./user-routing.module";
     UserRoutingModule
   ],
   exports: [
-    CategoryNavbarComponent,
     HomeComponent,
     CommentFormComponent,
     CommentListComponent,

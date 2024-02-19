@@ -1,9 +1,12 @@
 <app-header></app-header>
 
+<ng-container *ngIf="!isAdminRoute">
+  <app-category-navbar></app-category-navbar>
+</ng-container>
+
 <div class="app-body">
   <router-outlet></router-outlet>
 </div>
 
 
 <app-footer></app-footer>
-
