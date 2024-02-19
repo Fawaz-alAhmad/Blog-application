@@ -1,0 +1,15 @@
+@import '../../../../../styles';
+nav {
+  height: 50px;
+  background-color: $navbar-footer-color;
+}
+
+.nav-link {
+  text-transform: uppercase;
+  color: $primary-color;
+}
+
+.navbar-nav{
+  flex-direction: row;
+  gap:2rem;
+}
