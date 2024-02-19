@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: 'terms-conditions', component: TermsAndConditionsComponent },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
