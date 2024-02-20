@@ -27,6 +27,7 @@ export class CategoriesComponent implements OnInit {
     const categoryColRef = collection(this.firestore, 'categories');
     addDoc(categoryColRef, categoryData)
       .then((docRef: DocumentReference) => {
+        form.reset();
         let ref = doc(this.firestore, `categories/${docRef.id}`);
         const subCategoryColRef = collection(ref, 'subCollection');
         addDoc(subCategoryColRef, subCategoryData)

@@ -5,10 +5,13 @@
       <h3 class="text-center text-theme-primary">New Categories</h3>
       <p class="text-center mb-5">Add new Categories here!</p>
 
-      <form class="form-inline text-center" #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm )" >
+      <form class="form-inline text-center" #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm )">
         <div class="form-group col-md-10">
-          <input type="text" class="form-control input-shadow" placeholder="add new category"
-           name="category" ngModel #category='ngModel'>
+          <input type="text" class="form-control input-shadow" placeholder="add new category" name="category" ngModel
+            #category='ngModel' required [class.is-invalid]="categoryForm.invalid && category.touched">
+          <ng-container *ngIf="categoryForm.invalid && category.touched">
+            <div class="alert alert-danger"></div>
+          </ng-container>
         </div>
 
         <div class="form-group col-md-2">
