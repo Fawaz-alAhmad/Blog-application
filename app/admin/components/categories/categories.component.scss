@@ -14,3 +14,11 @@ input[type="text"] {
   border: none;
   box-shadow: 0 2px 3px 1px rgb(0 0 0 / 12%);
 }
+
+.alert-danger {
+  height: 40px;
+  padding: 5px 24px;
+  margin-top: 8px;
+  width: 66%;
+  margin-inline: auto;
+}
