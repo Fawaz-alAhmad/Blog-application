@@ -9,7 +9,6 @@ import { CategoriesService } from '../../services/categories.service';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  public firestore: Firestore = inject(Firestore)
 
   constructor(private categoryService: CategoriesService) { }
 

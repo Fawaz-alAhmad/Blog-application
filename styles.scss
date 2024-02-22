@@ -46,3 +46,10 @@ body{
   text-wrap:nowrap;
 }
 
+.yourclass.toast-success {
+  opacity: 0.9 !important;
+  border-radius:10px !important;
+}
+.toast-top-center{
+  top:50px !important;
+}

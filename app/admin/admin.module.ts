@@ -9,7 +9,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 
 
-
 @NgModule({
   declarations: [
     MainComponent,
