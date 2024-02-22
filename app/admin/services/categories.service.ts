@@ -19,7 +19,10 @@ export class CategoriesService {
     const colRef = collection(this.firestore, 'categories');
     addDoc(colRef, categoryData)
       .then(() => {
-        this.toastr.success(categoryData.category, 'category stored successfully')
+        this.toastr.success(categoryData.category, 'category stored successfully', {
+          toastClass: 'yourclass ngx-toastr',
+          positionClass: 'toast-top-center',
+        })
         form.reset()
       })
       .catch(err => console.log(err))
