@@ -4,13 +4,13 @@ input[type="text"] {
   padding: 0.375rem 1rem;
 }
 .btn {
-  @media(max-width:767px) {
+  @media (max-width: 767px) {
     display: block;
     width: 100%;
   }
 }
 
-.input-shadow{
+.input-shadow {
   border: none;
   box-shadow: 0 2px 3px 1px rgb(0 0 0 / 12%);
 }
@@ -20,5 +20,9 @@ input[type="text"] {
   padding: 5px 24px;
   margin-top: 8px;
   width: 66%;
+  margin-inline: auto;
+}
+
+.middle {
   margin-inline: auto;
 }

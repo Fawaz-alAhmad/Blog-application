@@ -22,4 +22,34 @@
 
     </div>
   </div>
+  <div class="row my-5">
+    <div class="col-md-8 middle">
+      <div class="card shadow-effect">
+        <div class="card-body">
+
+          <table class="table row-border hover">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Category</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let category of categories$ | async, let i = index">
+                <td>{{i+1}}</td>
+                <td>{{category.category}}</td>
+                <td class="g-1">
+                  <button class="btn btn-warning btn-sm">edit</button>
+                  <button class="btn btn-danger btn-sm">delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
