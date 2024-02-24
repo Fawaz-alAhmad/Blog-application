@@ -1,7 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { DocumentReference, Firestore, addDoc, collection, doc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { CategoriesService } from '../../services/categories.service';
+import { Observable } from 'rxjs';
+import { DocumentData } from '@angular/fire/firestore';
+import { CategoryData } from '../../models/category.model';
 
 @Component({
   selector: 'app-categories',
@@ -10,14 +12,21 @@ import { CategoriesService } from '../../services/categories.service';
 })
 export class CategoriesComponent implements OnInit {
 
+  public categories$!: Observable<CategoryData[]>
+
   constructor(private categoryService: CategoriesService) { }
 
   ngOnInit(): void {
-
+    this.loadCategories()
+    this.categories$.subscribe(data=>console.log(data))
   }
 
   onSubmit(form: NgForm) {
     this.categoryService.saveNewCategory(form)
+  }
+
+  loadCategories() {
+    this.categories$ = this.categoryService.loadData()
   }
 }
 
