@@ -3,19 +3,21 @@
     <div class="col p-5 bg-secondary-theme">
 
       <h3 class="text-center text-theme-primary">New Categories</h3>
-      <p class="text-center mb-5">Add new Categories here!</p>
+      <p class="text-center mb-5">{{formAction}} new Categories here!</p>
 
       <form class="form-inline text-center" #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
         <div class="form-group col-md-10">
-          <input type="text" class="form-control input-shadow" placeholder="add new category" name="category" ngModel
-            #category='ngModel' required minlength="2" [class.is-invalid]="categoryForm.invalid && category.touched">
+          <input type="text" class="form-control input-shadow" placeholder="add new category" name="category"
+          [(ngModel)]="categoryField" #category='ngModel' required minlength="2"
+          [class.is-invalid]="categoryForm.invalid && category.touched">
+
           <ng-container *ngIf="category.errors?.['required']&& category.touched">
             <small class="alert alert-danger">please provide a category name</small>
           </ng-container>
         </div>
 
         <div class="form-group col-md-2">
-          <button type="submit" class="btn btn-main" [disabled]="categoryForm.invalid">add category</button>
+          <button type="submit" class="btn btn-main" [disabled]="categoryForm.invalid">{{formAction}} category</button>
         </div>
 
       </form>
@@ -23,11 +25,11 @@
     </div>
   </div>
   <div class="row my-5">
-    <div class="col-md-8 middle">
+    <div class="col-md-10 middle">
       <div class="card shadow-effect">
         <div class="card-body">
 
-          <table class="table row-border hover">
+          <table class="table row-border hover text-center">
             <thead>
               <tr>
                 <th>No</th>
@@ -40,9 +42,15 @@
               <tr *ngFor="let category of categories$ | async, let i = index">
                 <td>{{i+1}}</td>
                 <td>{{category.category}}</td>
-                <td class="g-1">
-                  <button class="btn btn-warning btn-sm">edit</button>
-                  <button class="btn btn-danger btn-sm">delete</button>
+                <td>
+                  <div>
+                    <button class="btn btn-warning btn-sm" (click)="displayCategoryInForm(category.category,category.id)">edit</button>
+                    <button class="btn btn-danger btn-sm ml-2">delete</button>
+                  </div>
+                  <!-- <ng-container *ngIf="isEditing">
+                    <input type="text" [(ngModel)]="editField">
+                    <button class="btn btn-warning btn-sm" (click)="editCategory(category.id)">Confirm</button>
+                  </ng-container> -->
                 </td>
               </tr>
             </tbody>

@@ -12,21 +12,37 @@ import { CategoryData } from '../../models/category.model';
 })
 export class CategoriesComponent implements OnInit {
 
-  public categories$!: Observable<CategoryData[]>
+  public categories$!: Observable<CategoryData[]>;
+  public formAction = 'Add';
+  public categoryField = '';
+  public categoryId = '';
 
   constructor(private categoryService: CategoriesService) { }
 
   ngOnInit(): void {
-    this.loadCategories()
-    this.categories$.subscribe(data=>console.log(data))
+    this.fetchCategories();
+  }
+
+  fetchCategories() {
+    this.categories$ = this.categoryService.loadData();
   }
 
   onSubmit(form: NgForm) {
+    this.formAction === 'Add' ? this.saveNewCategory(form) : this.editCategoryData()
+  }
+
+  saveNewCategory(form: NgForm) {
     this.categoryService.saveNewCategory(form)
   }
 
-  loadCategories() {
-    this.categories$ = this.categoryService.loadData()
+  editCategoryData() {
+    this.categoryService.editData(this.categoryId, this.categoryField)
+  }
+
+  displayCategoryInForm(category: string, id: string) {
+    this.categoryField = category;
+    this.formAction = 'Edit';
+    this.categoryId = id;
   }
 }
 

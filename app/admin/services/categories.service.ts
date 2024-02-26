@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentData, Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { DocumentData, Firestore, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { Category, CategoryData } from '../models/category.model';
 import { ToastrService } from 'ngx-toastr';
@@ -41,6 +41,12 @@ export class CategoriesService {
           })
         })
       )
+  }
+
+  public editData(id: string, categoy: String) {
+    const docRef = doc(this.firestore, 'categories' + id);
+   return updateDoc(docRef, { categoy })
+
   }
 
 }
