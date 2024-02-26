@@ -28,21 +28,29 @@ export class CategoriesComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.formAction === 'Add' ? this.saveNewCategory(form) : this.editCategoryData()
+    this.formAction === 'Add' ? this.saveNewCategory(form) : this.editCategoryData(form)
   }
 
   saveNewCategory(form: NgForm) {
     this.categoryService.saveNewCategory(form)
   }
 
-  editCategoryData() {
+  editCategoryData(form: NgForm) {
     this.categoryService.editData(this.categoryId, this.categoryField)
+      .then(() => {
+        form.reset();
+        this.formAction = 'Add';
+      })
   }
 
   displayCategoryInForm(category: string, id: string) {
     this.categoryField = category;
     this.formAction = 'Edit';
     this.categoryId = id;
+  }
+
+  deletedoc(id: string, category: string) {
+    this.categoryService.deleteDocument(id, category);
   }
 }
 

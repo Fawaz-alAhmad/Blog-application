@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentData, Firestore, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
+import { DocumentData, Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { Category, CategoryData } from '../models/category.model';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ export class CategoriesService {
     const colRef = collection(this.firestore, 'categories');
     addDoc(colRef, categoryData)
       .then(() => {
-        this.toastr.success(categoryData.category, 'category stored successfully', {
+        this.toastr.success( categoryData.category + 'stored successfully','Added ', {
           toastClass: 'yourclass ngx-toastr',
           positionClass: 'toast-top-center',
         })
@@ -43,10 +43,21 @@ export class CategoriesService {
       )
   }
 
-  public editData(id: string, categoy: String) {
-    const docRef = doc(this.firestore, 'categories' + id);
-   return updateDoc(docRef, { categoy })
+  public editData(id: string, category: string): Promise<void> {
+    const docRef = doc(this.firestore, 'categories/' + id);
+    return updateDoc(docRef, { category })
+  }
 
+  public deleteDocument(id: string, category: string) {
+    const docRef = doc(this.firestore, 'categories/' + id)
+    deleteDoc(docRef)
+    .then(() => {
+      this.toastr.success(category+' deleted successfully', 'Deleted! ', {
+        toastClass: 'yourclass ngx-toastr',
+        positionClass: 'toast-top-center',
+      })
+    })
+    .catch(err => console.log(err))
   }
 
 }
