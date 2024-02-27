@@ -24,15 +24,15 @@ body{
 }
 
 .bg-theme{
-  background-color: $primary-color;
+  background-color: $primary-color !important;
 }
 
 .text-theme-primary{
-  color:$primary-color
+  color:$primary-color !important;
 }
 
 .bg-secondary-theme{
-  background-color: $secondary-color;
+  background-color: $secondary-color !important;
 }
 
 .bg-II{
@@ -44,6 +44,9 @@ body{
   background:$primary-color !important;
   color:white !important;
   text-wrap:nowrap;
+  &:hover{
+    background:lighten($color: $primary-color, $amount: 7%)
+  }
 }
 
 .yourclass.toast-success {
