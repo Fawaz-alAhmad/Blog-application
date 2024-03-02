@@ -3,7 +3,8 @@ import { DocumentData, Firestore, addDoc, collection, collectionData, deleteDoc,
 import { NgForm } from '@angular/forms';
 import { Category, CategoryData } from '../models/category.model';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class CategoriesService {
     const colRef = collection(this.firestore, 'categories');
     addDoc(colRef, categoryData)
       .then(() => {
-        this.toastr.success( categoryData.category + 'stored successfully','Added ', {
+        this.toastr.success(categoryData.category + 'stored successfully', 'Added ', {
           toastClass: 'yourclass ngx-toastr',
           positionClass: 'toast-top-center',
         })
@@ -51,13 +52,20 @@ export class CategoriesService {
   public deleteDocument(id: string, category: string) {
     const docRef = doc(this.firestore, 'categories/' + id)
     deleteDoc(docRef)
-    .then(() => {
-      this.toastr.success(category+' deleted successfully', 'Deleted! ', {
-        toastClass: 'yourclass ngx-toastr',
-        positionClass: 'toast-top-center',
+      .then(() => {
+        this.toastr.success(category + ' deleted successfully', 'Deleted! ', {
+          toastClass: 'yourclass ngx-toastr',
+          positionClass: 'toast-top-center',
+        })
       })
-    })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
+  }
+
+  public loadCategories(): Observable<Category[]> {
+    const colRef = collection(this.firestore, 'categories');
+    return collectionData(colRef).pipe(
+      map(stream => stream.map((categDoc: DocumentData) => categDoc['category']))
+    )
   }
 
 }
