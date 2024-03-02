@@ -5,7 +5,7 @@
       <p class="mb-5">Add New Posts Here!</p>
     </div>
   </div>
-  <form [formGroup]="postForm" (ngSubmit)="onSubmitPost(postForm)">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmitPost()">
 
     <div class="row">
 
@@ -56,7 +56,8 @@
           <select name="categories" id="categories" class="form-control" formControlName="category"
             [class.is-invalid]="formControls['category'].touched && formControls['category'].invalid">
             <option value="">Select a Category</option>
-            <option value="category" *ngFor="let category of categories$ | async">{{category}}</option>
+            <option value="{{category.id}}-{{category.category}}" *ngFor="let category of categories$ | async">
+              {{category.category}}</option>
           </select>
           <ng-container *ngIf="formControls['category']?.hasError('required')">
             <div class="alert alert-danger"
@@ -73,7 +74,8 @@
           </div>
           <ng-container *ngIf="formControls['imgInput']?.hasError('required')">
             <div class="alert alert-danger"
-              *ngIf="formControls['imgInput'].touched && formControls['imgInput'].invalid">Please Choose an Image to Upload
+              *ngIf="formControls['imgInput'].touched && formControls['imgInput'].invalid">Please Choose an Image to
+              Upload
             </div>
           </ng-container>
 
@@ -87,11 +89,13 @@
           <div class="card-body">
             <div class="form-group">
               <label for="content">Content</label>
-              <angular-editor formControlName="htmlContent" [config]="editorConfig" formControlName="content"></angular-editor>
+              <angular-editor formControlName="htmlContent" [config]="editorConfig"
+                formControlName="content"></angular-editor>
             </div>
             <ng-container *ngIf="formControls['content']?.hasError('required')">
               <div class="alert alert-danger"
-                *ngIf="formControls['content'].touched && formControls['content'].invalid">Please Enter Your Post Content
+                *ngIf="formControls['content'].touched && formControls['content'].invalid">Please Enter Your Post
+                Content
               </div>
             </ng-container>
           </div>
