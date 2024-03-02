@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="text-theme-primary">New Post</h3>
+      <p class="mb-5">Add New Posts Here!</p>
+    </div>
+  </div>
+  <form [formGroup]="postForm" (ngSubmit)="onSubmitPost(postForm)">
+
+    <div class="row">
+
+      <div class="col-md-7">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" formControlName="title"
+                [class.is-invalid]="formControls['title'].touched && formControls['title'].invalid">
+            </div>
+            <ng-container *ngIf="formControls['title']?.hasError('required')">
+              <div class="alert alert-danger" *ngIf="formControls['title'].touched && formControls['title'].invalid">
+                Title is required</div>
+            </ng-container>
+            <ng-container *ngIf="formControls['title']?.hasError('minlength')">
+              <div class="alert alert-danger" *ngIf="formControls['title'].touched && formControls['title'].invalid">
+                Title has to be at least 8
+                chatacters long</div>
+            </ng-container>
+
+            <div class="form-group">
+              <label for="permalink">Permalink</label>
+              <input type="text" class="form-control" id="permalink" formControlName="permalink">
+            </div>
+
+            <div class="form-group">
+              <label for="excerpt">Excerpt</label>
+              <textarea name="" id="" cols="30" rows="5" class="form-control" id="excerpt" formControlName="excerpt"
+                [class.is-invalid]="formControls['excerpt'].touched && formControls['excerpt'].invalid"></textarea>
+            </div>
+            <ng-container *ngIf="formControls['excerpt']?.hasError('required')">
+              <div class="alert alert-danger"
+                *ngIf="formControls['excerpt'].touched && formControls['excerpt'].invalid">excerpt is required</div>
+            </ng-container>
+            <ng-container *ngIf="formControls['excerpt']?.hasError('minlength')">
+              <div class="alert alert-danger"
+                *ngIf="formControls['excerpt'].touched && formControls['excerpt'].invalid">Excerpt has to be at least 50
+                chatacters long</div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="categories">Please Select a Post Category</label>
+          <select name="categories" id="categories" class="form-control" formControlName="category"
+            [class.is-invalid]="formControls['category'].touched && formControls['category'].invalid">
+            <option value="">Select a Category</option>
+            <option value="category" *ngFor="let category of categories$ | async">{{category}}</option>
+          </select>
+          <ng-container *ngIf="formControls['category']?.hasError('required')">
+            <div class="alert alert-danger"
+              *ngIf="formControls['category'].touched && formControls['category'].invalid">Please choose a category
+            </div>
+          </ng-container>
+
+          <div class="form-group mt-3">
+            <label for="image">Post Image</label>
+            <img [src]="imgSrc" alt="" class="form-control img-fluid img-preview">
+            <input type="file" class="form-control" accept="image/*" formControlName="imgInput"
+              (change)="onFileSelected($event)"
+              [class.is-invalid]="formControls['imgInput'].touched && formControls['imgInput'].invalid">
+          </div>
+          <ng-container *ngIf="formControls['imgInput']?.hasError('required')">
+            <div class="alert alert-danger"
+              *ngIf="formControls['imgInput'].touched && formControls['imgInput'].invalid">Please Choose an Image to Upload
+            </div>
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="content">Content</label>
+              <angular-editor formControlName="htmlContent" [config]="editorConfig" formControlName="content"></angular-editor>
+            </div>
+            <ng-container *ngIf="formControls['content']?.hasError('required')">
+              <div class="alert alert-danger"
+                *ngIf="formControls['content'].touched && formControls['content'].invalid">Please Enter Your Post Content
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="col text-center mt-3 mb-5">
+        <button class="btn btn-main" type="submit" [disabled]="postForm.invalid">Save Post</button>
+        <button class="btn btn-dark ml-4" routerLink="/admin/posts">back</button>
+      </div>
+    </div>
+
+  </form>
+</div>

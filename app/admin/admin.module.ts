@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -9,6 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { AllPostsComponent } from './components/posts/all-posts/all-posts.component';
 import { NewPostComponent } from './components/posts/new-post/new-post.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { NewPostComponent } from './components/posts/new-post/new-post.component
     SharedModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    AngularEditorModule
   ]
 })
 export class AdminModule { }
